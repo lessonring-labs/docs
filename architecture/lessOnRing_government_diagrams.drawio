@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="ChatGPT" version="22.1.0">
+
+  <diagram name="01_System_Architecture">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850">
+      <root>
+<mxCell id="0"/>
+<mxCell id="1" parent="0"/>
+<mxCell id="2" value="Diagram 1. 시스템 구성도 (System Architecture)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="520" height="40" as="geometry"/>
+        </mxCell>
+<mxCell id="3" value="Mobile App&#xa;(Member/Instructor)&#xa;- Kakao Login&#xa;- Map View&#xa;- Reservation/Dispatch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="260" height="110" as="geometry"/>
+        </mxCell>
+<mxCell id="4" value="Admin Web (Next.js)&#xa;(Academy Admin)&#xa;- Dashboard&#xa;- Member/Pass/Class&#xa;- Dispatch/Route" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="330" y="80" width="270" height="110" as="geometry"/>
+        </mxCell>
+<mxCell id="5" value="Ingress / Nginx&#xa;- HTTPS/TLS&#xa;- Reverse Proxy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="200" y="220" width="240" height="70" as="geometry"/>
+        </mxCell>
+<mxCell id="6" value="Spring Boot API&#xa;- Auth(JWT)&#xa;- Reservation&#xa;- Dispatch&#xa;- Route&#xa;- Audit Log" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="130" y="320" width="270" height="140" as="geometry"/>
+        </mxCell>
+<mxCell id="7" value="Kafka&#xa;- lesson-events&#xa;- dispatch-events&#xa;- notification-events(옵션)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="420" y="340" width="250" height="110" as="geometry"/>
+        </mxCell>
+<mxCell id="8" value="Notification Worker&#xa;(옵션/확장)&#xa;- Push/KakaoTalk" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="690" y="340" width="230" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="9" value="PostgreSQL&#xa;(주요 트랜잭션 데이터)" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="130" y="500" width="210" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="10" value="Redis&#xa;- Lock(예약/배차)&#xa;- Cache" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="360" y="500" width="210" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="11" value="Object Storage&#xa;(옵션)&#xa;- VOD/Files" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="500" width="210" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="14" value="Kakao Map SDK&#xa;(앱 지도 렌더링)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="840" y="60" width="220" height="60" as="geometry"/>
+        </mxCell>
+<mxCell id="12" value="Kakao Login API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="840" y="140" width="220" height="60" as="geometry"/>
+        </mxCell>
+<mxCell id="13" value="Kakao Mobility&#xa;Directions API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="840" y="220" width="220" height="60" as="geometry"/>
+        </mxCell>
+<mxCell id="15" value="핵심 포인트&#xa;- Redis 동시성 제어(예약/배차)&#xa;- Kafka 이벤트 기반 비동기 확장&#xa;- 카카오 인증/경로/지도 연동" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="620" width="470" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="16" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="3" target="5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="17" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="4" target="5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="18" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="5" target="6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="19" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="6" target="9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="20" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="6" target="10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="21" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="6" target="7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="22" style="endArrow=block;html=1;rounded=0;dashed=1;" edge="1" parent="1" source="7" target="8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="23" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="6" target="12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="24" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="6" target="13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="25" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="3" target="14">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram name="02_Process_Flow_Visit_Lesson">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850">
+      <root>
+<mxCell id="0"/>
+<mxCell id="1" parent="0"/>
+<mxCell id="2" value="Diagram 2. 핵심 업무 흐름도 (방문수업)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="520" height="40" as="geometry"/>
+        </mxCell>
+<mxCell id="3" value="Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="20" y="70" width="180" height="520" as="geometry"/>
+        </mxCell>
+<mxCell id="4" value="API / Services" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="210" y="70" width="240" height="520" as="geometry"/>
+        </mxCell>
+<mxCell id="5" value="Data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="460" y="70" width="190" height="520" as="geometry"/>
+        </mxCell>
+<mxCell id="6" value="Kafka" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="660" y="70" width="180" height="520" as="geometry"/>
+        </mxCell>
+<mxCell id="7" value="External" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="850" y="70" width="220" height="520" as="geometry"/>
+        </mxCell>
+<mxCell id="8" value="1) Member&#xa;예약 요청" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="35" y="110" width="150" height="60" as="geometry"/>
+        </mxCell>
+<mxCell id="9" value="2) 예약 검증&#xa;정원/중복&#xa;수강권 차감" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="230" y="110" width="200" height="70" as="geometry"/>
+        </mxCell>
+<mxCell id="10" value="3) Redis Lock&#xa;중복 방지" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="475" y="120" width="160" height="60" as="geometry"/>
+        </mxCell>
+<mxCell id="11" value="4) DB 저장&#xa;예약/수강권" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="475" y="200" width="160" height="60" as="geometry"/>
+        </mxCell>
+<mxCell id="12" value="5) Publish&#xa;VISIT_LESSON_BOOKED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="675" y="120" width="150" height="60" as="geometry"/>
+        </mxCell>
+<mxCell id="13" value="6) 배차 생성/강사할당&#xa;(Consumer/Worker)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="230" y="220" width="200" height="70" as="geometry"/>
+        </mxCell>
+<mxCell id="14" value="7) Publish&#xa;DISPATCH_ASSIGNED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="675" y="220" width="150" height="60" as="geometry"/>
+        </mxCell>
+<mxCell id="15" value="8) 경로 생성&#xa;Directions 호출" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="230" y="330" width="200" height="70" as="geometry"/>
+        </mxCell>
+<mxCell id="16" value="9) Polyline 저장&#xa;거리/시간" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="475" y="340" width="160" height="60" as="geometry"/>
+        </mxCell>
+<mxCell id="17" value="10) 앱 지도 표시&#xa;실제 도로 경로" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="35" y="430" width="150" height="70" as="geometry"/>
+        </mxCell>
+<mxCell id="18" value="Kakao Mobility&#xa;Directions API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="875" y="340" width="180" height="60" as="geometry"/>
+        </mxCell>
+<mxCell id="19" value="주요 설계 포인트&#xa;- 트랜잭션 정합성 + 이벤트 비동기 확장&#xa;- 경로 캐싱/재계산 정책" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="610" width="520" height="80" as="geometry"/>
+        </mxCell>
+<mxCell id="20" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="8" target="9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="21" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="9" target="10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="22" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="9" target="11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="23" style="endArrow=block;html=1;dashed=1;" edge="1" parent="1" source="9" target="12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="24" style="endArrow=block;html=1;dashed=1;" edge="1" parent="1" source="12" target="13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="25" style="endArrow=block;html=1;dashed=1;" edge="1" parent="1" source="13" target="14">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="26" style="endArrow=block;html=1;dashed=1;" edge="1" parent="1" source="14" target="15">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="27" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="15" target="18">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="28" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="18" target="16">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="29" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="16" target="17">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram name="03_Deployment_Kubernetes_k3s">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850">
+      <root>
+<mxCell id="0"/>
+<mxCell id="1" parent="0"/>
+<mxCell id="2" value="Diagram 3. 배포/운영 구성도 (Kubernetes k3s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="560" height="40" as="geometry"/>
+        </mxCell>
+<mxCell id="3" value="Kubernetes Cluster (k3s)&#xa;- Rolling Update&#xa;- Health Check&#xa;- Scale-out(옵션)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="760" height="520" as="geometry"/>
+        </mxCell>
+<mxCell id="4" value="Ingress Controller&#xa;(Traefik/Nginx)&#xa;- TLS/HTTPS&#xa;- Routing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="3">
+          <mxGeometry x="80" y="120" width="220" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="5" value="Deployment: api&#xa;(Spring Boot)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="3">
+          <mxGeometry x="120" y="240" width="220" height="80" as="geometry"/>
+        </mxCell>
+<mxCell id="6" value="Deployment: admin-web&#xa;(Next.js)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="3">
+          <mxGeometry x="420" y="240" width="220" height="80" as="geometry"/>
+        </mxCell>
+<mxCell id="7" value="Service: api" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="3">
+          <mxGeometry x="120" y="340" width="220" height="50" as="geometry"/>
+        </mxCell>
+<mxCell id="8" value="Service: admin-web" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="3">
+          <mxGeometry x="420" y="340" width="220" height="50" as="geometry"/>
+        </mxCell>
+<mxCell id="9" value="ConfigMap&#xa;- ENV&#xa;- Feature Flags" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="3">
+          <mxGeometry x="120" y="420" width="220" height="70" as="geometry"/>
+        </mxCell>
+<mxCell id="10" value="Secret&#xa;- DB/Redis/Kafka&#xa;- API Keys" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="3">
+          <mxGeometry x="420" y="420" width="220" height="70" as="geometry"/>
+        </mxCell>
+<mxCell id="11" value="HPA (옵션)&#xa;- api scale-out" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="3">
+          <mxGeometry x="660" y="240" width="120" height="80" as="geometry"/>
+        </mxCell>
+<mxCell id="12" value="PostgreSQL&#xa;(초기: 외부/별도 운영 권장)" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="830" y="180" width="230" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="13" value="Redis&#xa;(초기: 외부/별도 운영 권장)" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="830" y="290" width="230" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="14" value="Kafka&#xa;(초기: 외부/별도 운영 권장)" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="830" y="400" width="230" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="15" value="GitHub Repository" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="610" width="200" height="60" as="geometry"/>
+        </mxCell>
+<mxCell id="16" value="GitHub Actions CI/CD&#xa;- build/test&#xa;- image push&#xa;- deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="260" y="610" width="280" height="70" as="geometry"/>
+        </mxCell>
+<mxCell id="17" value="운영 포인트&#xa;- 외부 포트 최소화(443/80)&#xa;- DB/Redis/Kafka 내부망 접근&#xa;- 정기 백업/복구" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="610" width="500" height="80" as="geometry"/>
+        </mxCell>
+<mxCell id="18" value="Mobile App" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="200" height="60" as="geometry"/>
+        </mxCell>
+<mxCell id="19" value="Admin Web" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="200" height="60" as="geometry"/>
+        </mxCell>
+<mxCell id="20" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="18" target="4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="21" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="19" target="4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="22" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="4" target="7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="23" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="4" target="8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="24" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="7" target="5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="25" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="8" target="6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="26" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="5" target="12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="27" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="5" target="13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="28" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="5" target="14">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="29" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="15" target="16">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="30" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="16" target="3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram name="04_Security_Privacy">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850">
+      <root>
+<mxCell id="0"/>
+<mxCell id="1" parent="0"/>
+<mxCell id="2" value="Diagram 4. 보안/개인정보 처리 구성도" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="560" height="40" as="geometry"/>
+        </mxCell>
+<mxCell id="3" value="Mobile App&#xa;- Kakao Login&#xa;- JWT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="240" height="80" as="geometry"/>
+        </mxCell>
+<mxCell id="4" value="Admin Web&#xa;- RBAC&#xa;- Audit 대상" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="190" width="240" height="80" as="geometry"/>
+        </mxCell>
+<mxCell id="5" value="Ingress/Nginx&#xa;- TLS(HTTPS)&#xa;- Rate Limit(옵션)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="320" y="130" width="240" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="6" value="Spring Boot API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="320" y="260" width="240" height="70" as="geometry"/>
+        </mxCell>
+<mxCell id="7" value="Auth&#xa;- Kakao OAuth&#xa;- JWT 발급/검증" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="600" y="110" width="240" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="8" value="Access Control(RBAC)&#xa;- Role 기반 권한&#xa;ADMIN/INSTRUCTOR/MEMBER" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="600" y="220" width="240" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="9" value="Audit Log&#xa;- 조회/수정 이력&#xa;- 관리자 접근 기록" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="600" y="330" width="240" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="10" value="PostgreSQL" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="320" y="380" width="200" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="11" value="PII 보호&#xa;- 최소수집&#xa;- 마스킹/암호화&#xa;- 접근통제" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="450" width="300" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="12" value="Backup/Recovery&#xa;- 암호화 보관&#xa;- 접근 통제" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="490" width="200" height="90" as="geometry"/>
+        </mxCell>
+<mxCell id="13" value="Kakao Login API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="880" y="120" width="180" height="60" as="geometry"/>
+        </mxCell>
+<mxCell id="14" value="보안 핵심&#xa;- 전 구간 HTTPS/TLS&#xa;- JWT + RBAC&#xa;- 개인정보 목적 기반 최소 수집&#xa;- 감사로그로 추적성 확보" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="610" width="520" height="80" as="geometry"/>
+        </mxCell>
+<mxCell id="15" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="3" target="5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="16" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="4" target="5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="17" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="5" target="6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="18" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="6" target="10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="19" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="6" target="9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="20" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="6" target="8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="21" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="7" target="13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="22" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="6" target="7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="23" style="endArrow=block;html=1;dashed=1;" edge="1" parent="1" source="9" target="10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+<mxCell id="24" style="endArrow=block;html=1;dashed=1;" edge="1" parent="1" source="10" target="12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
